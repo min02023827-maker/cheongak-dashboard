@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --ink:        #0f172a;
+  --ink-soft:   #334155;
+  --muted:      #64748b;
+  --accent:     #2563eb;
+  --accent-weak:#eff6ff;
+  --surface:    #ffffff;
+  --line:       #e2e8f0;
+  --chip:       #f1f5f9;
+  --bg:         #f8fafc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 숫자 tabular */
+.tabnum { font-variant-numeric: tabular-nums; }
