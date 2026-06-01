@@ -444,7 +444,7 @@ export default function AnalysisPage() {
           <nav style={{ display: 'flex', gap: 28 }}>
             <Link href="/" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>청약 캘린더</Link>
             <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--accent)', cursor: 'pointer' }}>경쟁률 분석</span>
-            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', cursor: 'pointer' }}>관심단지</span>
+            <Link href="/favorites" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>관심단지</Link>
           </nav>
         </div>
       </header>

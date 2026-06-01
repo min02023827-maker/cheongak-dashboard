@@ -86,7 +86,7 @@ export default function Home() {
           <nav style={{ display: 'flex', gap: 28 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--accent)', cursor: 'pointer' }}>청약 캘린더</span>
             <Link href="/analysis" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>경쟁률 분석</Link>
-            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', cursor: 'pointer' }}>관심단지</span>
+            <Link href="/favorites" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>관심단지</Link>
           </nav>
         </div>
       </header>

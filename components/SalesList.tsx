@@ -3,6 +3,7 @@
 import { SaleItem } from '@/lib/api';
 import Link from 'next/link';
 import HouseGlyph, { regionBg } from './HouseGlyph';
+import { useFavorites } from '@/lib/useFavorites';
 
 export function getStatusInfo(item: SaleItem): { label: string; color: string; bg: string; dot: boolean } {
   const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
@@ -14,7 +15,7 @@ export function getStatusInfo(item: SaleItem): { label: string; color: string; b
   return { label: '마감', color: '#94a3b8', bg: '#f1f5f9', dot: false };
 }
 
-function getDday(item: SaleItem): { label: string; sub: string; urgent: boolean } {
+export function getDday(item: SaleItem): { label: string; sub: string; urgent: boolean } {
   const today = new Date().toISOString().slice(0, 10);
   const todayMs = new Date(today).getTime();
   const end = item.RCEPT_ENDDE ?? item.RCEPT_BGNDE;
@@ -39,6 +40,8 @@ function MiniStat({ label, value }: { label: string; value: string }) {
 }
 
 export default function SalesList({ items }: { items: SaleItem[] }) {
+  const { isFav, toggle, mounted } = useFavorites();
+
   if (!items.length) {
     return (
       <div style={{ padding: '80px 0', textAlign: 'center', color: 'var(--muted)', fontSize: 15 }}>
@@ -53,6 +56,7 @@ export default function SalesList({ items }: { items: SaleItem[] }) {
         const status = getStatusInfo(item);
         const dday = getDday(item);
         const region = item.SUBSCRPT_AREA_CODE_NM ?? '';
+        const fav = mounted && isFav(item.HOUSE_MANAGE_NO);
         return (
           <Link key={item.HOUSE_MANAGE_NO ?? i} href={`/${item.HOUSE_MANAGE_NO}`} style={{ textDecoration: 'none' }}>
             <div style={{
@@ -81,6 +85,23 @@ export default function SalesList({ items }: { items: SaleItem[] }) {
                 <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'end center' }}>
                   <HouseGlyph region={region} bare style={{ width: 150, height: 96, display: 'block', opacity: 0.95 }} />
                 </div>
+                {/* 하트 버튼 */}
+                <button
+                  onClick={e => { e.preventDefault(); e.stopPropagation(); toggle(item.HOUSE_MANAGE_NO); }}
+                  style={{
+                    position: 'absolute', bottom: 10, right: 10, zIndex: 2,
+                    width: 32, height: 32, borderRadius: 999, border: 'none', cursor: 'pointer',
+                    background: fav ? '#ef4444' : 'rgba(255,255,255,0.85)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all .15s', boxShadow: '0 1px 4px rgba(0,0,0,.15)',
+                  }}
+                  aria-label={fav ? '관심단지 해제' : '관심단지 추가'}
+                >
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill={fav ? 'white' : 'none'} stroke={fav ? 'white' : '#94a3b8'} strokeWidth="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                  </svg>
+                </button>
+
                 {/* 상태 배지 */}
                 <div style={{ position: 'absolute', top: 12, left: 12 }}>
                   <span style={{
