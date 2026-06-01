@@ -445,6 +445,7 @@ export default function AnalysisPage() {
             <Link href="/" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>청약 캘린더</Link>
             <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--accent)', cursor: 'pointer' }}>경쟁률 분석</span>
             <Link href="/favorites" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>관심단지</Link>
+            <Link href="/calculator" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>가점 계산기</Link>
           </nav>
         </div>
       </header>
