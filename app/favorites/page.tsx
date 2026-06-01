@@ -70,6 +70,7 @@ export default function FavoritesPage() {
             <Link href="/" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>청약 캘린더</Link>
             <Link href="/analysis" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>경쟁률 분석</Link>
             <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--accent)' }}>관심단지</span>
+            <Link href="/calculator" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>가점 계산기</Link>
           </nav>
         </div>
       </header>
