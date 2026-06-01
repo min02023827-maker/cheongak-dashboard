@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
+import Link from 'next/link';
 import { fetchSales, SaleItem } from '@/lib/api';
 import SalesList, { getStatusInfo } from '@/components/SalesList';
 
@@ -84,7 +85,7 @@ export default function Home() {
           </div>
           <nav style={{ display: 'flex', gap: 28 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--accent)', cursor: 'pointer' }}>청약 캘린더</span>
-            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', cursor: 'pointer' }}>경쟁률 분석</span>
+            <Link href="/analysis" style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', textDecoration: 'none' }}>경쟁률 분석</Link>
             <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--muted)', cursor: 'pointer' }}>관심단지</span>
           </nav>
         </div>
